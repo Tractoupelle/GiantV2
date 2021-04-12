@@ -48,14 +48,9 @@ public class GiantPlugin extends JavaPlugin {
 
             }
 
-            giantManager.setTimeBeforeSpawning(-1);
-
             Bukkit.broadcastMessage(messageConfig.getString("PREFIX") + messageConfig.getString("STOP"));
             Logger.info(messageConfig.getString("STOP"), Logger.LogType.SUCCESS);
 
-            giantManager.setAlive(false);
-            giantManager.setStart(false);
-            giantManager.setInStart(false);
         }
 
     }
