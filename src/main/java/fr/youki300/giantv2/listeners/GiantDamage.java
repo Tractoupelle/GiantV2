@@ -1,7 +1,7 @@
 package fr.youki300.giantv2.listeners;
 
-import fr.youki300.giantv2.Giant;
-import fr.youki300.giantv2.GiantManager;
+import fr.youki300.giantv2.data.Giant;
+import fr.youki300.giantv2.manager.GiantManager;
 import fr.youki300.giantv2.GiantPlugin;
 import fr.youki300.giantv2.api.event.GiantUnleashedEvent;
 import net.minecraft.server.v1_8_R3.BlockPosition;

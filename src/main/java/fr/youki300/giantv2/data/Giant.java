@@ -1,4 +1,4 @@
-package fr.youki300.giantv2;
+package fr.youki300.giantv2.data;
 
 import fr.youki300.giantv2.customs.CustomGiant;
 import org.bukkit.Location;

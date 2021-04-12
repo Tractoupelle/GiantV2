@@ -3,11 +3,7 @@ package fr.youki300.giantv2.api.event;
 import org.bukkit.entity.Player;
 import org.bukkit.event.Event;
 import org.bukkit.event.HandlerList;
-
 import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
-
 
 public class GiantWinEvent extends Event {
 
