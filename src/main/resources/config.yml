@@ -1,0 +1,78 @@
+#################################################
+# Default configuration for GiantV2 by Youki300 #
+#################################################
+
+## GIANT INFORMATIONS ##
+
+NAME: "§6§lGiant"
+
+# Countdown in second
+COUNTDOWN: 120
+
+# Basically the max life of a monster is 2048 on Spigot, so if you want more you have to change this value. Path spigot.yml > attribute > maxHealth > max.
+# Set wants u wants like 10000000 (It does not define the life of the giant but only the maximum value on the server).
+# For the life of the Giant it is below
+HEALTH: 2048
+
+# Damage of the GIANT (He don't remove 4 heart but its how is set the code)
+# For the giant-damage of the Giant it is below and u need restart the plugin for change.
+GIANT-DAMAGE: 4
+
+DAMAGE-CLASSEMENT: true
+
+FIREWORK: true
+AMOUNT: 10
+
+LOSS-DURABILITY-BY-THE-GIANT: false
+
+COUNTDOWN-MESSAGE-IN-SECOND:
+  - "1"
+  - "2"
+  - "3"
+  - "5"
+  - "30"
+  - "60"
+  - "120"
+
+FORCE:
+ FORCE-LUCK:
+  USE-FORCE: false
+  PLAY-SOUND: true
+  # The force luck is a task that is repeated approximately every 2 seconds
+  # during the whole event and that when the force luck is equal, this propels
+  # people who are at the distance forceDistance.
+  FORCE-LUCK: 10
+  FORCE-DISTANCE: 3
+  FORCE-X: 0.0
+  FORCE-Y: 0.1
+  FORCE-Z: 0.0
+ FORCE-WITH-HEALTH:
+   USE-FORCE: true
+   PLAY-SOUND: true
+   FORCE-DISTANCE: 6
+   FORCE-X: 0.0
+   FORCE-Y: 0.1
+   FORCE-Z: 0.0
+   FORCE-GIANT-UNLEASHED-MESSAGE: true
+   FORCE-WHEN-HEALTH:
+     - "100"
+     - "1000"
+     - "1400"
+     - "1500"
+     - "1600"
+     - "2000"
+
+## REWARD ##
+REWARD-KILLER: true
+KILLER-COMMAND:
+  - "eco give %winner% 10000"
+
+REWARD-DAMAGER-CLASSEMENT: true
+FIRST-DAMAGER-COMMAND:
+  - "eco give %firstWinner% 10000"
+
+SECOND-DAMAGER-COMMAND:
+  - "eco give %secondWinner% 5000"
+
+THIRST-DAMAGER-COMMAND:
+  - "eco give %thirdWinner% 1000"

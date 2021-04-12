@@ -1,0 +1,33 @@
+##################################################################
+# Default message configuration for GiantV2 by Tractopelle#4020 #
+#################################################################
+
+PREFIX: "§6(§e§lGiant§6) §e"
+
+NO-PERMISSION:  "You don't have the permission."
+NOT-PLAYER:  "Only player can execute this command."
+ALREADY-ALIVE: "The Giant is already alive."
+NOT-ALIVE: "The Giant is not alive."
+COUNTDOWN-ALREADY-START: "The countdown is already starting."
+STOP: "§cThe Giant has been cancelled."
+NOT-START: "§cThe Giant is not start."
+FORCE-START: "The event was force start."
+RELOAD-ALIVE: "You can't reload when the giant is in start."
+RELOAD-SUCCESS: "Reload successfully !"
+ALREADY-START: "§cThe event has already been launched."
+KILL-WIN: "§6§l%winner% §ekilled the %name%§e."
+PEACEFULL: "§cThe server is in PEACEFULL. Change this for use the plugin."
+DAMAGER-NONE: "None"
+DAMAGE-NONE: "None"
+SPAWN: "Appearance of the %name%. §eLocation : §7World: %world% X: %x% Y: %y% Z: %z%"
+GIANT-SPAWN-COUNTDOWN: "Appearance of the %name% §ein§6 %cooldown% §e!"
+GIANT-SPAWN-COUNTDOWN-TIME-SECOND: "%s% second(s)"
+GIANT-SPAWN-COUNTDOWN-TIME-MINUTE: "%m% minute(s) and %s% second(s)"
+CURRENT-LIFE: "Current life : §7%life%§8/§7%maxlife%"
+GIANT-UNLEASHED: "§6Warning §e! The §6%name%§e is unleashed."
+POSITION-SET: "§eYou have set the Giant's spawn to your position."
+DAMAGER-CLASSEMENT-MESSAGE:
+  - "%prefix%§6§lTop Damage :"
+  - "%prefix%§e1st §6» §6§l%firstName% §7: §e§l%firstDamage% §edamage"
+  - "%prefix%§e2nd §6» §6§l%secondName% §7: §e§l%secondtDamage% §edamage"
+  - "%prefix%§e3th §6» §6§l%thirstName% §7: §e§l%thirstDamage% §edamage"

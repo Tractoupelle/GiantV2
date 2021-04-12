@@ -1,0 +1,19 @@
+name: GiantV2
+version: ${project.version}
+description: Private plugin for Eronya.
+author: Youki300
+
+main: fr.youki300.giantv2.GiantPlugin
+softdepend: [PlaceHolderAPI]
+
+commands:
+  giant:
+    description: Main command.
+    alliase: [giantv2]
+    permission: giantv2.admin
+
+permissions:
+  giantv2.*:
+    description: Gives access to all GiantV2 commands
+    children:
+      giantv2.admin: true

@@ -1,0 +1,12 @@
+<component name="libraryTable">
+  <library name="spigot-1.8.8" type="repository">
+    <properties maven-id="jline:jline:2.14" />
+    <CLASSES>
+      <root url="jar://$MAVEN_REPOSITORY$/jline/jline/2.14/jline-2.14.jar!/" />
+    </CLASSES>
+    <JAVADOC />
+    <SOURCES>
+      <root url="jar://$MAVEN_REPOSITORY$/jline/jline/2.14/jline-2.14-sources.jar!/" />
+    </SOURCES>
+  </library>
+</component>
