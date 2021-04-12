@@ -12,11 +12,20 @@ public class GiantManager {
     private boolean isAlive = false;
     private boolean inStart = false;
     private boolean isStart = false;
+    private boolean isForceStopped = false;
     private List<Integer> forceWhenHealth;
 
     public GiantManager(List<Integer> forceWhenHealth) {
         this.forceWhenHealth = forceWhenHealth;
 
+    }
+
+    public boolean isForceStopped() {
+        return isForceStopped;
+    }
+
+    public void setForceStopped(boolean forceStopped) {
+        isForceStopped = forceStopped;
     }
 
     public int getTimeBeforeSpawning() {

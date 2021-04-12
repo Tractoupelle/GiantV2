@@ -2,7 +2,7 @@
 # Default message configuration for GiantV2 by Tractopelle#4020 #
 #################################################################
 
-PREFIX: "§6(§e§lGiant§6) §e"
+PREFIX: "§6Giant §f» §e"
 
 NO-PERMISSION:  "You don't have the permission."
 NOT-PLAYER:  "Only player can execute this command."

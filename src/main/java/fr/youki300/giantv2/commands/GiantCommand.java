@@ -40,11 +40,11 @@ public class GiantCommand extends GCommand {
 
         if (args.length != 1) {
             commandSender.sendMessage(prefix + "Help:");
-            commandSender.sendMessage(prefix + "§6» §e/giant info : §7Informations about the Giant.");
-            commandSender.sendMessage(prefix + "§6» §e/giant move : §7Move spawn location of Giant to your location.");
-            commandSender.sendMessage(prefix + "§6» §e/giant start : §7Spawn Giant with Delay.");
-            commandSender.sendMessage(prefix + "§6» §e/giant now : §7Instant spawn Giant without Delay.");
-            commandSender.sendMessage(prefix + "§6» §e/giant stop : §7Stop and Kill Giant.");
+            commandSender.sendMessage(prefix + "§e/giant info : §7Informations about the Giant.");
+            commandSender.sendMessage(prefix + "§e/giant move : §7Move spawn location of Giant to your location.");
+            commandSender.sendMessage(prefix + "§e/giant start : §7Spawn Giant with Delay.");
+            commandSender.sendMessage(prefix + "§e/giant now : §7Instant spawn Giant without Delay.");
+            commandSender.sendMessage(prefix + "§e/giant stop : §7Stop and Kill Giant.");
             return true;
         }
 
@@ -166,8 +166,10 @@ public class GiantCommand extends GCommand {
             for (Entity entity : Bukkit.getWorld(giant.getLocation().getWorld().getName()).getEntities()) {
 
                 if (entity.getName().equals(giant.getName())) {
+                    giantManager.setForceStopped(true);
                     ((org.bukkit.entity.Giant) entity).damage(giant.getHealth() * 4);
                     entity.setLastDamageCause(null);
+
                 }
 
             }

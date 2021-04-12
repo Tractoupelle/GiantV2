@@ -34,14 +34,22 @@ public class GiantDeath implements Listener {
     @EventHandler
     public void onEntityDeath(EntityDeathEvent event) {
 
-        if(!(giantManager.isAlive())){ return; }
+        if (!(giantManager.isAlive())) {
+            return;
+        }
 
-        if(event.getEntity().getType().equals(EntityType.GIANT) && event.getEntity().getName().equals(giant.getName())){
+        if (event.getEntity().getType().equals(EntityType.GIANT) && event.getEntity().getName().equals(giant.getName())) {
+
+
+            if (giantManager.isForceStopped()) {
+                giantManager.setForceStopped(false);
+                return;
+            }
 
             Entity giant = event.getEntity();
             Player winner = event.getEntity().getKiller();
 
-            if(giantPlugin.getMainConfig().getBoolean("FIREWORK")) {
+            if (giantPlugin.getMainConfig().getBoolean("FIREWORK")) {
                 spawnFireworks(giant.getLocation(), giantPlugin.getMainConfig().getInt("AMOUNT"));
             }
 
@@ -67,6 +75,7 @@ public class GiantDeath implements Listener {
             Bukkit.getPluginManager().callEvent(giantWinEvent);
 
         }
+
     }
 
     public static void spawnFireworks(Location location, int amount) {
@@ -86,8 +95,8 @@ public class GiantDeath implements Listener {
         }
     }
 
-    public void giantClassement(Player winner){
-        if(giantPlugin.getMainConfig().getBoolean("DAMAGE-CLASSEMENT")) {
+    public void giantClassement(Player winner) {
+        if (giantPlugin.getMainConfig().getBoolean("DAMAGE-CLASSEMENT")) {
 
             int i = 0;
 
@@ -103,11 +112,11 @@ public class GiantDeath implements Listener {
             for (Map.Entry<Player, Double> str : entriesSortedByValues(giant.getDamageToGiant())) {
 
                 i++;
-                if (i > 3){
+                if (i > 3) {
                     break;
                 }
 
-                if(i == 1){
+                if (i == 1) {
 
                     firstDamager = str.getKey();
                     firstDamage = str.getValue();
@@ -128,33 +137,33 @@ public class GiantDeath implements Listener {
             List<String> classementMessage = giantPlugin.getMessageConfig().getStringList("DAMAGER-CLASSEMENT-MESSAGE");
             final String noneDamager = giantPlugin.getMessageConfig().getString("DAMAGER-NONE");
             final String noneDamage = giantPlugin.getMessageConfig().getString("DAMAGE-NONE");
-            final String prefix =  giantPlugin.getMessageConfig().getString("PREFIX");
+            final String prefix = giantPlugin.getMessageConfig().getString("PREFIX");
 
-            for(String classement : classementMessage){
+            for (String classement : classementMessage) {
 
-                classement = classement.replace("%prefix%", prefix).replace("%firstName%" , (firstDamager == null ? noneDamager : firstDamager.getName())).replace("%firstDamage%", (firstDamager == null ? noneDamage : String.valueOf((int) firstDamage)));
-                classement = classement.replace("%prefix%", prefix).replace("%secondName%" , (secondDamager == null ? noneDamager : secondDamager.getName())).replace("%secondtDamage%", (secondDamager == null ? noneDamage : String.valueOf((int) secondDamage)));
-                classement = classement.replace("%prefix%", prefix).replace("%thirstName%" , (thirstDamager == null ? noneDamager : thirstDamager.getName())).replace("%thirstDamage%", (thirstDamager == null ? noneDamage : String.valueOf((int) thirstDamage)));
+                classement = classement.replace("%prefix%", prefix).replace("%firstName%", (firstDamager == null ? noneDamager : firstDamager.getName())).replace("%firstDamage%", (firstDamager == null ? noneDamage : String.valueOf((int) firstDamage)));
+                classement = classement.replace("%prefix%", prefix).replace("%secondName%", (secondDamager == null ? noneDamager : secondDamager.getName())).replace("%secondtDamage%", (secondDamager == null ? noneDamage : String.valueOf((int) secondDamage)));
+                classement = classement.replace("%prefix%", prefix).replace("%thirstName%", (thirstDamager == null ? noneDamager : thirstDamager.getName())).replace("%thirstDamage%", (thirstDamager == null ? noneDamage : String.valueOf((int) thirstDamage)));
 
                 Bukkit.broadcastMessage(classement);
 
             }
 
-            if(giantPlugin.getMainConfig().getBoolean("REWARD-DAMAGER-CLASSEMENT")) {
+            if (giantPlugin.getMainConfig().getBoolean("REWARD-DAMAGER-CLASSEMENT")) {
                 for (String cmd : giantPlugin.getMainConfig().getStringList("FIRST-DAMAGER-COMMAND")) {
-                    if(firstDamager != null) {
+                    if (firstDamager != null) {
                         Bukkit.dispatchCommand(Bukkit.getConsoleSender(), cmd.replace("%firstWinner%", firstDamager.getName()));
                     }
                 }
 
                 for (String cmd : giantPlugin.getMainConfig().getStringList("SECOND-DAMAGER-COMMAND")) {
-                    if(secondDamager != null){
+                    if (secondDamager != null) {
                         Bukkit.dispatchCommand(Bukkit.getConsoleSender(), cmd.replace("%secondWinner%", secondDamager.getName()));
                     }
                 }
 
                 for (String cmd : giantPlugin.getMainConfig().getStringList("THIRST-DAMAGER-COMMAND")) {
-                    if(thirstDamager != null) {
+                    if (thirstDamager != null) {
                         Bukkit.dispatchCommand(Bukkit.getConsoleSender(), cmd.replace("%thirdWinner%", thirstDamager.getName()));
                     }
                 }
@@ -164,8 +173,7 @@ public class GiantDeath implements Listener {
         }
 
 
-
-        if(giantPlugin.getMainConfig().getBoolean("REWARD-KILLER")) {
+        if (giantPlugin.getMainConfig().getBoolean("REWARD-KILLER")) {
 
             for (String cmd : giantPlugin.getMainConfig().getStringList("KILLER-COMMAND")) {
                 Bukkit.dispatchCommand(Bukkit.getConsoleSender(), cmd.replace("%winner%", winner.getName()));
