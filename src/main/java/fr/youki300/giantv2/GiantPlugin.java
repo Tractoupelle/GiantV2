@@ -128,7 +128,6 @@ public class GiantPlugin extends JavaPlugin {
 
         giantManager.getForceWhenHealth().sort(Collections.reverseOrder());
 
-
     }
 
 }
