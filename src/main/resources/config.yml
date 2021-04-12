@@ -76,3 +76,5 @@ SECOND-DAMAGER-COMMAND:
 
 THIRST-DAMAGER-COMMAND:
   - "eco give %thirdWinner% 1000"
+
+

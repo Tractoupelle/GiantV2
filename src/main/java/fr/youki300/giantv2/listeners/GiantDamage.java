@@ -61,7 +61,7 @@ public class GiantDamage implements Listener {
                         sendActionBar(players, message);
                     }
 
-                    if(giantManager.isForceWithHealth()){
+                    if(giantPlugin.getMainConfig().getBoolean("FORCE.FORCE-WITH-HEALTH.USE-FORCE")){
 
                         int firstWhenHealth =  giantManager.getForceWhenHealth().get(0);
 
@@ -82,11 +82,9 @@ public class GiantDamage implements Listener {
 
                             Collection<Entity> collection = location.getWorld().getNearbyEntities(location, 3, 3, 3);
 
-                            double d1 = giantManager.getForceWithHealthX();
-                            double d2 = giantManager.getForceWithHealthY();
-                            double d3 = giantManager.getForceWithHealthZ();
-
-
+                            double d1 = giantPlugin.getMainConfig().getDouble("FORCE.FORCE-WITH-HEALT.FORCE-X");
+                            double d2 = giantPlugin.getMainConfig().getDouble("FORCE.FORCE-WITH-HEALT.FORCE-Y");
+                            double d3 = giantPlugin.getMainConfig().getDouble("FORCE.FORCE-WITH-HEALT.FORCE-Z");
 
                             collection.forEach(paramEntity -> {
 
@@ -100,7 +98,7 @@ public class GiantDamage implements Listener {
 
                                     paramEntity.setVelocity(vector3);
 
-                                    if(giantManager.isfHplaySound()) {
+                                    if(giantPlugin.getMainConfig().getBoolean("FORCE.FORCE-WITH-HEALTH.PLAY-SOUND")) {
 
                                         ((Player) paramEntity).playSound(paramEntity.getLocation(), Sound.ENDERDRAGON_WINGS, 10, 10);
 
@@ -110,7 +108,7 @@ public class GiantDamage implements Listener {
 
                             });
 
-                            if(giantManager.isfHdisplayMessage()) {
+                            if(giantPlugin.getMainConfig().getBoolean("FORCE.FORCE-WITH-HEALTH.FORCE-GIANT-UNLEASHED-MESSAGE")) {
 
                                 Bukkit.broadcastMessage(giantPlugin.getMessageConfig().getString("PREFIX") + giantPlugin.getMessageConfig().getString("GIANT-UNLEASHED")
                                         .replace("%name%", giant.getName()));
@@ -138,12 +136,12 @@ public class GiantDamage implements Listener {
                             }
                             damageTaker.updateInventory();
                         }
-
                     }
                 }
             }
         }
     }
+
     public static void sendActionBar(Player p, String message) {
         IChatBaseComponent cbc = IChatBaseComponent.ChatSerializer.a("{\"text\": \"" + message + "\"}");
         PacketPlayOutChat ppoc = new PacketPlayOutChat(cbc, (byte) 2);

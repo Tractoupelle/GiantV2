@@ -7,146 +7,16 @@ import java.util.List;
 
 public class GiantManager {
 
-    private final boolean forceWithHealth;
-    private final int forceWithHealthX;
-    private final int forceWithHealthY;
-    private final int forceWithHealthZ;
-    private final int forceWithHealthDistance;
 
-    private final boolean fHplaySound;
-    private final boolean fHdisplayMessage;
-
-    private List<Integer> forceWhenHealth;
-    private int countTime;
     private int timeBeforeSpawning = -1;
     private boolean isAlive = false;
     private boolean inStart = false;
     private boolean isStart = false;
-    private boolean force;
-    private int forceX;
-    private int forceY;
-    private int forceZ;
-    private int forceDistance;
-    private int forceChance;
-    private boolean fLplaySound;
-    private List<String> countdownDisplays = new ArrayList<>();
+    private List<Integer> forceWhenHealth;
 
-    public GiantManager(int countTime,
-                        boolean force, int forceX, int forceY, int forceZ, int forceDistance, int forceLuck, boolean fLplaySound,
-                        boolean forceWithHealth, int forceWithHealthX, int forceWithHealthY, int forceWithHealthZ, int forceWithHealthDistance, List<Integer> forceWhenHealth,boolean fHdisplayMessage, boolean fHplaySound){
-        this.countTime = countTime;
-
-        this.force = force;
-        this.forceX = forceX;
-        this.forceY = forceY;
-        this.forceZ = forceZ;
-        this.forceChance = forceLuck;
-        this.fLplaySound = fLplaySound;
-        this.forceDistance = forceDistance;
-
-        this.forceWithHealth = forceWithHealth;
-        this.forceWithHealthX = forceWithHealthX;
-        this.forceWithHealthY = forceWithHealthY;
-        this.forceWithHealthZ = forceWithHealthZ;
-        this.forceWithHealthDistance = forceWithHealthDistance;
+    public GiantManager(List<Integer> forceWhenHealth) {
         this.forceWhenHealth = forceWhenHealth;
-        this.fHdisplayMessage = fHdisplayMessage;
-        this.fHplaySound = fHplaySound;
 
-    }
-
-    public boolean isfHplaySound() {
-        return fHplaySound;
-    }
-
-    public boolean isfHdisplayMessage() {
-        return fHdisplayMessage;
-    }
-
-    public boolean isfLplaySound() {
-        return fLplaySound;
-    }
-
-    public void setfLplaySound(boolean fLplaySound) {
-        this.fLplaySound = fLplaySound;
-    }
-
-    public List<Integer> getForceWhenHealth() {
-        return forceWhenHealth;
-    }
-
-    public int getForceChance() {
-        return forceChance;
-    }
-
-    public void setForceChance(int forceChance) {
-        this.forceChance = forceChance;
-    }
-
-    public boolean isForceWithHealth() {
-        return forceWithHealth;
-    }
-
-    public int getForceWithHealthX() {
-        return forceWithHealthX;
-    }
-
-    public int getForceWithHealthY() {
-        return forceWithHealthY;
-    }
-
-    public int getForceWithHealthZ() {
-        return forceWithHealthZ;
-    }
-
-    public int getForceWithHealthDistance() {
-        return forceWithHealthDistance;
-    }
-
-    public boolean isForceAttack() {
-        return force;
-    }
-
-    public void setForce(boolean force) {
-        this.force = force;
-    }
-
-    public int getForceX() {
-        return forceX;
-    }
-
-    public void setForceX(int forceX) {
-        this.forceX = forceX;
-    }
-
-    public int getForceY() {
-        return forceY;
-    }
-
-    public void setForceY(int forceY) {
-        this.forceY = forceY;
-    }
-
-    public int getForceZ() {
-        return forceZ;
-    }
-
-    public void setForceZ(int forceZ) {
-        this.forceZ = forceZ;
-    }
-
-    public int getForceDistance() {
-        return forceDistance;
-    }
-
-    public void setForceDistance(int forceDistance) {
-        this.forceDistance = forceDistance;
-    }
-
-    public int getCountTime() { return countTime; }
-
-    public void setCountTime(int countTime) {
-        this.countTime = countTime;
     }
 
     public int getTimeBeforeSpawning() {
@@ -181,12 +51,12 @@ public class GiantManager {
         isStart = start;
     }
 
-    public List<String> getCountdownDisplays() {
-        return countdownDisplays;
+    public List<Integer> getForceWhenHealth() {
+        return forceWhenHealth;
     }
 
-    public void setCountdownDisplays(List<String> countdownDisplays) {
-        this.countdownDisplays = countdownDisplays;
+    public void setForceWhenHealth(List<Integer> forceWhenHealth) {
+        this.forceWhenHealth = forceWhenHealth;
     }
 
     public String getTimeBeforeSpawningFormat () {
@@ -210,9 +80,5 @@ public class GiantManager {
 
         return formattedTime;
 
-    }
-
-    public void setForceWhenHealth(List<Integer> integerList) {
-        this.forceWhenHealth = integerList;
     }
 }

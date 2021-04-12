@@ -12,7 +12,6 @@ import org.bukkit.Location;
 import org.bukkit.entity.Entity;
 import org.bukkit.plugin.PluginManager;
 import org.bukkit.plugin.java.JavaPlugin;
-
 import java.util.Collections;
 
 public class GiantPlugin extends JavaPlugin {
@@ -113,25 +112,7 @@ public class GiantPlugin extends JavaPlugin {
 
     public void initGiant(Config mainConfig) {
 
-        this.giantManager = new GiantManager(
-                mainConfig.getInt("COUNTDOWN"),
-                mainConfig.getBoolean("FORCE.FORCE-LUCK.USE-FORCE"),
-                mainConfig.getInt("FORCE.FORCE-LUCK.FORCE-X"),
-                mainConfig.getInt("FORCE.FORCE-LUCK.FORCE-Y"),
-                mainConfig.getInt("FORCE.FORCE-LUCK.FORCE-Z"),
-                mainConfig.getInt("FORCE.FORCE-LUCK.FORCE-DISTANCE"),
-                mainConfig.getInt("FORCE.FORCE-LUCK.FORCE-LUCK"),
-                mainConfig.getBoolean("FORCE.FORCE-LUCK.PLAY-SOUND"),
-
-                mainConfig.getBoolean("FORCE.FORCE-WITH-HEALTH.USE-FORCE"),
-                mainConfig.getInt("FORCE.FORCE-WITH-HEALTH.FORCE-X"),
-                mainConfig.getInt("FORCE.FORCE-WITH-HEALTH.FORCE-Y"),
-                mainConfig.getInt("FORCE.FORCE-WITH-HEALTH.FORCE-Z"),
-                mainConfig.getInt("FORCE.FORCE-WITH-HEALTH.FORCE-DISTANCE"),
-                mainConfig.getIntegerList("FORCE.FORCE-WITH-HEALTH.FORCE-WHEN-HEALTH"),
-                mainConfig.getBoolean("FORCE.FORCE-WITH-HEALTH.FORCE-GIANT-UNLEASHED-MESSAGE"),
-                mainConfig.getBoolean("FORCE.FORCE-WITH-HEALTH.PLAY-SOUND"));
-
+        this.giantManager = new GiantManager(mainConfig.getIntegerList("FORCE.FORCE-WITH-HEALTH.FORCE-WHEN-HEALTH"));
 
         this.giant = new Giant(
 
@@ -143,7 +124,6 @@ public class GiantPlugin extends JavaPlugin {
                         locationConfig.getInt("SPAWN-LOCATION.Z"))
         );
 
-        giantManager.setCountdownDisplays(mainConfig.getStringList("COUNTDOWN-MESSAGE-IN-SECOND"));
         giantManager.getForceWhenHealth().sort(Collections.reverseOrder());
 
 

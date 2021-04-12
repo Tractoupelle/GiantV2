@@ -6,7 +6,7 @@
 
     <groupId>fr.youki300</groupId>
     <artifactId>GiantV2</artifactId>
-    <version>1.5-REALESE</version>
+    <version>0.0.1</version>
 
     <repositories>
         <repository>

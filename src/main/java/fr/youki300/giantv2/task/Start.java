@@ -12,21 +12,18 @@ import org.bukkit.Bukkit;
 import org.bukkit.craftbukkit.v1_8_R3.entity.CraftPlayer;
 import org.bukkit.entity.Player;
 import org.bukkit.scheduler.BukkitRunnable;
-import java.util.List;
 
 public class Start extends BukkitRunnable {
 
     private final GiantPlugin giantPlugin;
     private final Giant giant;
     private final GiantManager giantManager;
-    private final List<String> countDown;
     private final String countdownMessage;
 
     public Start (GiantPlugin giantPlugin){
         this.giantPlugin = giantPlugin;
         giant = giantPlugin.getGiant();
         giantManager = giantPlugin.getGiantManager();
-        countDown = giantManager.getCountdownDisplays();
         countdownMessage = giantPlugin.getMessageConfig().getString("PREFIX") + giantPlugin.getMessageConfig().getString("GIANT-SPAWN-COUNTDOWN");
     }
 
@@ -37,7 +34,7 @@ public class Start extends BukkitRunnable {
 
             spawnGiant();
 
-            new AliveAttack(giant, giantManager).runTaskTimerAsynchronously(giantPlugin, 20 , 20);
+            new AliveAttack(giantPlugin, giant, giantManager).runTaskTimerAsynchronously(giantPlugin, 20 , 20);
 
             GiantSpawnEvent giantSpawnEvent = new GiantSpawnEvent(giant.getLocation());
             Bukkit.getPluginManager().callEvent(giantSpawnEvent);
@@ -46,7 +43,7 @@ public class Start extends BukkitRunnable {
 
         } else {
 
-            if(countDown.contains(String.valueOf(giantManager.getTimeBeforeSpawning()))){
+            if(giantPlugin.getMainConfig().getStringList("COUNTDOWN-MESSAGE-IN-SECOND").contains(String.valueOf(giantManager.getTimeBeforeSpawning()))){
 
                 String message = (countdownMessage.replace("%cooldown%", String.valueOf(giantManager.getTimeBeforeSpawningFormat()))
                         .replace("%name%", giant.getName()));

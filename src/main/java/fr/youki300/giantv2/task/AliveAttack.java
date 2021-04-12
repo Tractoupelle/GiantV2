@@ -2,6 +2,7 @@ package fr.youki300.giantv2.task;
 
 import fr.youki300.giantv2.Giant;
 import fr.youki300.giantv2.GiantManager;
+import fr.youki300.giantv2.GiantPlugin;
 import fr.youki300.giantv2.api.event.GiantStartEvent;
 import fr.youki300.giantv2.api.event.GiantUnleashedEvent;
 import net.minecraft.server.v1_8_R3.BlockPosition;
@@ -19,8 +20,10 @@ public class AliveAttack extends BukkitRunnable {
 
     private final Giant giant;
     private final GiantManager giantManager;
+    private final GiantPlugin giantPlugin;
 
-    public AliveAttack (Giant giant, GiantManager giantManager){
+    public AliveAttack (GiantPlugin giantPlugin, Giant giant, GiantManager giantManager){
+        this.giantPlugin = giantPlugin;
         this.giantManager = giantManager;
         this.giant = giant;
     }
@@ -28,11 +31,13 @@ public class AliveAttack extends BukkitRunnable {
     @Override
     public void run() {
 
-        if (giantManager.isForceAttack()) {
+        if (giantPlugin.getMainConfig().getBoolean("FORCE.FORCE-LUCK.USE-FORCE")) {
 
-            int random = new Random().nextInt(giantManager.getForceChance());
+            int forceLuck = giantPlugin.getMainConfig().getInt("FORCE.FORCE-LUCK.FORCE-LUCK");
 
-            if (random == giantManager.getForceChance() / 2) {
+            int random = new Random().nextInt(forceLuck);
+
+            if (random == forceLuck / 2) {
 
                 BlockPosition blockPosition = giant.getCustomGiant().getChunkCoordinates();
 
@@ -47,9 +52,9 @@ public class AliveAttack extends BukkitRunnable {
 
                 Collection<Entity> collection = location.getWorld().getNearbyEntities(location, 3, 3, 3);
 
-                double d1 = giantManager.getForceX();
-                double d2 = giantManager.getForceY();
-                double d3 = giantManager.getForceZ();
+                double d1 = giantPlugin.getMainConfig().getDouble("FORCE.FORCE-LUCK.FORCE-X");
+                double d2 = giantPlugin.getMainConfig().getDouble("FORCE.FORCE-LUCK.FORCE-Y");
+                double d3 = giantPlugin.getMainConfig().getDouble("FORCE.FORCE-LUCK.FORCE-Z");
 
                 collection.forEach(paramEntity -> {
 
@@ -63,7 +68,7 @@ public class AliveAttack extends BukkitRunnable {
 
                         paramEntity.setVelocity(vector3);
 
-                        if(giantManager.isfHplaySound()) {
+                        if(giantPlugin.getMainConfig().getBoolean("FORCE.FORCE-LUCK.USE-FORCE")) {
 
                             ((Player) paramEntity).playSound(paramEntity.getLocation(), Sound.ENDERDRAGON_WINGS, 10, 10);
 
