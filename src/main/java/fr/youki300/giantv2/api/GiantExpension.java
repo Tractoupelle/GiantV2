@@ -172,6 +172,120 @@ public class GiantExpension extends PlaceholderExpansion {
                 }
 
                 break;
+
+            case "seconddamager":
+
+                if (giantManager.isStart() && giantManager.isAlive()) {
+
+                    int i = 0;
+
+                    if (giant.getDamageToGiant().isEmpty()) {
+                        return "null";
+                    }
+
+                    for (Map.Entry<Player, Double> str : entriesSortedByValues(giant.getDamageToGiant())) {
+
+                        i++;
+                        if (i > 2) {
+                            break;
+                        }
+
+                        if (i == 2) {
+
+                            return str.getKey().getName();
+
+                        }
+
+                    }
+                }
+
+                break;
+            case "seconddamage":
+
+                if (giantManager.isStart() && giantManager.isAlive()) {
+
+                    if (giant.getDamageToGiant().isEmpty()) {
+                        return "null";
+                    }
+
+                    int ii = 0;
+
+                    for (Map.Entry<Player, Double> str : entriesSortedByValues(giant.getDamageToGiant())) {
+
+                        ii++;
+                        if (ii > 2) {
+                            break;
+                        }
+
+                        if (ii == 2) {
+
+                            double damage = str.getValue();
+                            DecimalFormat df = new DecimalFormat("#.#");
+
+                            return String.valueOf(df.format(damage));
+
+                        }
+                    }
+                }
+
+                break;
+
+            case "thirtdamager":
+
+                if (giantManager.isStart() && giantManager.isAlive()) {
+
+                    int i = 0;
+
+                    if (giant.getDamageToGiant().isEmpty()) {
+                        return "null";
+                    }
+
+                    for (Map.Entry<Player, Double> str : entriesSortedByValues(giant.getDamageToGiant())) {
+
+                        i++;
+                        if (i > 3) {
+                            break;
+                        }
+
+                        if (i == 3) {
+
+                            return str.getKey().getName();
+
+                        }
+
+                    }
+                }
+
+                break;
+            case "thirtdamage":
+
+                if (giantManager.isStart() && giantManager.isAlive()) {
+
+                    if (giant.getDamageToGiant().isEmpty()) {
+                        return "null";
+                    }
+
+                    int ii = 0;
+
+                    for (Map.Entry<Player, Double> str : entriesSortedByValues(giant.getDamageToGiant())) {
+
+                        ii++;
+                        if (ii > 1) {
+                            break;
+                        }
+
+                        if (ii == 3) {
+
+                            double damage = str.getValue();
+                            DecimalFormat df = new DecimalFormat("#.#");
+
+                            return String.valueOf(df.format(damage));
+
+                        }
+                    }
+                }
+
+                break;
         }
 
 

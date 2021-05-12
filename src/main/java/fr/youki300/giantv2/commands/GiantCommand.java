@@ -149,6 +149,8 @@ public class GiantCommand extends GCommand {
 
             new Start(giantPlugin).runTaskTimer(giantPlugin, 0L, 20L);
 
+            giantPlugin.reloadGiant();
+
             GiantStartEvent giantStartEvent = new GiantStartEvent(giant.getLocation());
             Bukkit.getPluginManager().callEvent(giantStartEvent);
 

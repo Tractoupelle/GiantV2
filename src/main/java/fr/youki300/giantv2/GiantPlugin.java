@@ -130,4 +130,12 @@ public class GiantPlugin extends JavaPlugin {
 
     }
 
+    public void reloadGiant(){
+
+        giantManager.getForceWhenHealth().clear();
+        giantManager.setForceWhenHealth(mainConfig.getIntegerList("FORCE.FORCE-WITH-HEALTH.FORCE-WHEN-HEALTH"));
+        giantManager.getForceWhenHealth().sort(Collections.reverseOrder());
+
+    }
+
 }

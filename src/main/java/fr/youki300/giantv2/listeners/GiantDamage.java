@@ -63,7 +63,7 @@ public class GiantDamage implements Listener {
 
                     if(giantPlugin.getMainConfig().getBoolean("FORCE.FORCE-WITH-HEALTH.USE-FORCE")){
 
-                        int firstWhenHealth =  giantManager.getForceWhenHealth().get(0);
+                        int firstWhenHealth = (giantManager.getForceWhenHealth().isEmpty() ? 0 : giantManager.getForceWhenHealth().get(0));
 
                         if(firstWhenHealth > life){
 
