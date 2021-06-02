@@ -22,5 +22,4 @@ public class GiantStartEvent extends Event {
         return location;
     }
 
-
 }

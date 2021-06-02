@@ -31,9 +31,8 @@ public class GiantCommand extends GCommand {
         this.prefix = prefix;
         this.mainConfig = giantPlugin.getMainConfig();
         this.messageConfig = giantPlugin.getMessageConfig();
+
     }
-
-
 
     @Override
     public boolean execute(CommandSender commandSender, String[] args) {

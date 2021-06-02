@@ -13,10 +13,10 @@ import org.bukkit.entity.EntityType;
 import org.bukkit.entity.Firework;
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
+import org.bukkit.event.EventPriority;
 import org.bukkit.event.Listener;
 import org.bukkit.event.entity.EntityDeathEvent;
 import org.bukkit.inventory.meta.FireworkMeta;
-
 import java.util.*;
 
 public class GiantDeath implements Listener {
@@ -31,15 +31,14 @@ public class GiantDeath implements Listener {
         this.giantManager = giantManager;
     }
 
-    @EventHandler
+    @EventHandler (priority = EventPriority.MONITOR, ignoreCancelled = true)
     public void onEntityDeath(EntityDeathEvent event) {
 
         if (!(giantManager.isAlive())) {
             return;
         }
 
-        if (event.getEntity().getType().equals(EntityType.GIANT) && event.getEntity().getName().equals(giant.getName())) {
-
+        if (event.getEntity().getName().equals(giant.getCustomGiant().getName())) {
 
             if (giantManager.isForceStopped()) {
                 giantManager.setForceStopped(false);
@@ -96,6 +95,7 @@ public class GiantDeath implements Listener {
     }
 
     public void giantClassement(Player winner) {
+
         if (giantPlugin.getMainConfig().getBoolean("DAMAGE-CLASSEMENT")) {
 
             int i = 0;

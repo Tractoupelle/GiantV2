@@ -2,8 +2,6 @@ package fr.youki300.giantv2.manager;
 
 import fr.youki300.giantv2.GiantPlugin;
 import fr.youki300.giantv2.config.Config;
-
-import java.util.ArrayList;
 import java.util.List;
 
 public class GiantManager {
